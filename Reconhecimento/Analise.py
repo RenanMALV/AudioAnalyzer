@@ -30,7 +30,7 @@ def Compare():
     ArrList = searchInDB()
     Match = []
     for i in ArrList:
-        if i[0]>tam-5 and i[0]<tam+5:
+        if i[0]>tam-2 and i[0]<tam+2:
             Match.append(i)
     if len(Match)>0:
         for i in Match:
@@ -111,7 +111,7 @@ def Compare():
         for Value in Ac:
             print("-------------", Value)
             if Value == 0:
-                if Ac[cont-1]>0.7:
+                if Ac[cont-1]>0.8:
                     Value = 0.5
             cont += 1
             aux += Value
