@@ -1,0 +1,14 @@
+Python 3.7
+
+microsoft c++ 14.0 redistributable is required
+
+numpy
+python -m pip install numpy
+
+scipy
+python -m pip install scipy-1.3.1-cp38-cp38-win32.whl --user
+at https://www.lfd.uci.edu/~gohlke/pythonlibs/
+
+pyaudio
+pip install PyAudio‑0.2.11‑cp37‑cp37m‑win_amd64.whl
+at https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
