@@ -19,7 +19,7 @@ def Modo():
 def getFilename():
     try:
         print("Insira o caminho do arquivo")
-        filename=str(input()) #audiocheck.net_sin_500Hz_-3dBFS_5s.wav
+        filename=str(input())
         wf = wave.open(filename, 'rb')
         wf.close()
         return filename
