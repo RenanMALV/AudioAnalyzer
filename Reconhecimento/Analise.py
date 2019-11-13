@@ -1,4 +1,4 @@
-,import time
+import time
 import numpy as np
 from Functions import *
 
@@ -24,10 +24,10 @@ def getData_Arr():
     return DataXTime_Arr
 
 def Compare():
-    global DataXTime_Arr
-    DataXTime_ArrList = []
+    global DataXTime_Arr        #Array principal de dados
+    DataXTime_ArrList = []      #Lista de possíveis arrays semelhantes à array principal para serem comparadas
     tam = len(DataXTime_Arr)
-    ArrList = searchInDB()
+    ArrList = searchInDB()      #Devolve uma lista com todos os arquivos que foram analisados e postos no banco de dados
     Match = []
     for i in ArrList:
         if i[0]>tam-2 and i[0]<tam+2:
@@ -45,7 +45,7 @@ def Compare():
     AcuraciaToCompare=[]
     media = 0
 
-    for Row in DataXTime_Arr:
+    for Row in DataXTime_Arr:       #Média aritimética das colunas da matriz fornecida
         for Col in Row:
             if Col!=0:
                 cont += 1
@@ -57,7 +57,7 @@ def Compare():
         cont = 0
         media = 0
     
-    for Arr in DataXTime_ArrList:
+    for Arr in DataXTime_ArrList:   #Média aritimética das colunas ds matrizes que são semelhantes a matriz fornecida
         MediaAtual = []
         for Row in Arr:
             for Col in Row:
@@ -70,11 +70,13 @@ def Compare():
                 MediaAtual.append(media/cont)
             cont = 0
             media = 0
+
+        #Comparação linha a linha da matriz fornecida com as possiveis matrizes semelhantes
         Acuracia = []
         if (len(MediaToCompare))<(len(MediaAtual)):
             C=len(MediaToCompare)
             i=0
-            while C>i:
+            while C>i:      #Verificação da acuracia do resultado(o quão proximo da matriz principal esta matriz para comparação está)
                 print(MediaToCompare[i],"<|>",MediaAtual[i])
                 if MediaToCompare[i] == 0 and MediaAtual[i]==0:
                     Acuracia.append(1)
@@ -89,7 +91,7 @@ def Compare():
         else:
             A=len(MediaAtual)
             i=0
-            while A>i:
+            while A>i:      #Verificação da acuracia do resultado(o quão proximo da matriz principal esta matriz para comparação está)
                 print(MediaToCompare[i],"<|>",MediaAtual[i])
                 if MediaToCompare[i] == 0 and MediaAtual[i]==0:
                     Acuracia.append(1)
@@ -104,7 +106,8 @@ def Compare():
             
         AcuraciaToCompare.append(Acuracia)
 
-    BestResult = [0,0] #melhor resultado com [índice,valor]  
+    BestResult = [0,0] #melhor resultado com [índice,valor]
+    #Compara todas as acuracias obtidas e seleciona a com maior porcentagem
     for Ac in AcuraciaToCompare:
         aux = 0
         cont = 0
